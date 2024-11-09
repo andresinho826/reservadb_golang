@@ -1,4 +1,4 @@
-package mappaing
+package mapping
 
 type ConnectionStruct struct {
 	DbConfig struct {

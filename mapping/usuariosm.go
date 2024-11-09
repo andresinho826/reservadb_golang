@@ -1,4 +1,4 @@
-package mappaing
+package mapping
 
 type UsuarioStruct struct {
 	Primer_Nombre            string `json:"nombre"`

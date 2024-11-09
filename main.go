@@ -9,7 +9,7 @@ import (
 	"os"
 
 	"reservas.com/reservas/entidad"
-	"reservas.com/reservas/mappaing"
+	"reservas.com/reservas/mapping"
 )
 
 func main() {
@@ -47,7 +47,7 @@ func consultarReservas(w http.ResponseWriter, req *http.Request) {
 }
 
 func crearUsuario(w http.ResponseWriter, req *http.Request) {
-	user := &mappaing.UsuarioStruct{}
+	user := &mapping.UsuarioStruct{}
 
 	for name, values := range req.Header {
 		for _, val := range values {

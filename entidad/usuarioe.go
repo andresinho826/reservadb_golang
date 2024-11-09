@@ -4,13 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"reservas.com/reservas/mappaing"
+	"reservas.com/reservas/mapping"
 )
 
-var myUser []*mappaing.UsuarioStruct
+var myUser []*mapping.UsuarioStruct
 
-func CreateUsers(user *mappaing.UsuarioStruct) []byte {
-	myUser = make([]*mappaing.UsuarioStruct, 0)
+func CreateUsers(user *mapping.UsuarioStruct) []byte {
+	myUser = make([]*mapping.UsuarioStruct, 0)
 	myUser = append(myUser, user)
 
 	for _, s := range myUser {

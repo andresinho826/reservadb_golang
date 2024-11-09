@@ -1,4 +1,4 @@
-package mappaing
+package mapping
 
 type ResponseStruct struct {
 	ResponseCode string `json:"responseCode"`
