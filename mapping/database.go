@@ -7,5 +7,5 @@ type ConnectionStruct struct {
 		Port     string `json:"port"`
 		User     string `json:"user"`
 		Password string `json:"password"`
-	} `json:"dbConfig"`
+	} `json:"dbconfig"`
 }

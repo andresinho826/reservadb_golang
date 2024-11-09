@@ -15,6 +15,7 @@ import (
 func main() {
 	err := doMain()
 	if err != nil {
+		log.Println(err.Error())
 		os.Exit(1)
 	}
 
@@ -24,7 +25,6 @@ func doMain() error {
 	log.Println("Application Running....")
 	err := runServer()
 	if err != nil {
-		log.Println(err.Error())
 		return err
 	}
 	return nil
