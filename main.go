@@ -18,12 +18,16 @@ func main() {
 		log.Println(err.Error())
 		os.Exit(1)
 	}
-
 }
 
 func doMain() error {
 	log.Println("Application Running....")
-	err := runServer()
+	err := seedDB()
+	if err != nil {
+		return err
+	}
+
+	err = runServer()
 	if err != nil {
 		return err
 	}
@@ -74,4 +78,15 @@ func crearUsuario(w http.ResponseWriter, req *http.Request) {
 	resp := entidad.CreateUsers(user)
 	w.Write(resp)
 
+}
+
+func seedDB() error {
+	user, err := entidad.FindUserById(1)
+	if err != nil {
+		fmt.Println(err.Error())
+		return err
+	}
+	userString, _ := json.Marshal(user)
+	log.Println(string(userString))
+	return nil
 }

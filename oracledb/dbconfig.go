@@ -2,15 +2,16 @@ package oracledb
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 
-	"reservas.com/reservas/util"
-
 	_ "github.com/sijms/go-ora/v2"
+	"reservas.com/reservas/mapping"
+	"reservas.com/reservas/util"
 )
 
 func GgetDBConnection() (*sql.DB, error) {
-	cnnStruct, err := util.GetDbStruct()
+	cnnStruct, err := getDbStruct()
 
 	if err != nil {
 		return nil, err
@@ -22,14 +23,24 @@ func GgetDBConnection() (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer db.Close()
+	//defer db.Close()
 	err = db.Ping()
 	if err != nil {
 		return nil, err
 	}
 	return db, nil
-	//var query string
-	//row := db.QueryRow("Select * from etc")
-	//_ = row.Scan(&query)
-	//fmt.Println("result", query)
+}
+
+func getDbStruct() (*mapping.ConnectionStruct, error) {
+	cnnStruct := &mapping.ConnectionStruct{}
+	pathf := "./resources/dbconfig.json"
+	file, err := util.ReadFiles(pathf)
+	if err != nil {
+		return cnnStruct, err
+	}
+	err = json.Unmarshal(file, cnnStruct)
+	if err != nil {
+		return cnnStruct, err
+	}
+	return cnnStruct, nil
 }
